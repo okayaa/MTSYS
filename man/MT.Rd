@@ -7,49 +7,49 @@
 MT(unit_space_data, includes_transformed_data = FALSE, ...)
 }
 \arguments{
-\item{unit_space_data}{Matrix with n rows (samples) and p columns (variables). 
-Data to generate the unit space. All data should be 
+\item{unit_space_data}{Matrix with n rows (samples) and p columns (variables).
+Data to generate the unit space. All data should be
 continuous values and should not have missing values.}
 
-\item{includes_transformed_data}{If \code{TRUE}, then the transformed data 
+\item{includes_transformed_data}{If \code{TRUE}, then the transformed data
 are included in a return object.}
 
-\item{...}{Passed to \code{\link[base]{solve}} for computing the inverse of 
+\item{...}{Passed to \code{\link[base]{solve}} for computing the inverse of
 the correlation matrix.}
 }
 \value{
-\code{MT} returns an object of S3 \link[base]{class} "MT". An object 
+\code{MT} returns an object of S3 \link[base]{class} "MT". An object
           of class "MT" is a list containing the following components:
 
- \item{A}{p x p (q x q) matrix. Inversed correlation matrix of 
+ \item{A}{p x p (q x q) matrix. Inversed correlation matrix of
            \code{unit_space_data} (the transformed data).}
  \item{calc_A}{\code{function(x) solve(cor(x), ...)}.}
- \item{transforms_data}{Function to be generated from 
-                         \code{\link{generates_normalization_function}} based 
+ \item{transforms_data}{Function to be generated from
+                         \code{\link{generates_normalization_function}} based
                          on \code{unit_space_data}.}
- \item{distance}{Vector with length n. Distances from the unit space to each 
+ \item{distance}{Vector with length n. Distances from the unit space to each
                   sample.}
  \item{n}{The number of samples.}
- \item{q}{The number of variables after the data transformation. q is equal 
-           to p.} 
- \item{x}{If \code{includes_transformed_data} is \code{TRUE}, then the 
+ \item{q}{The number of variables after the data transformation. q is equal
+           to p.}
+ \item{x}{If \code{includes_transformed_data} is \code{TRUE}, then the
            transformed data are included.}
 }
 \description{
-\code{MT} generates a unit space for the Mahalanobis-Taguchi (MT) method. In 
-  \code{\link{general_MT}}, the inversed correlation matrix is used for A and 
+\code{MT} generates a unit space for the Mahalanobis-Taguchi (MT) method. In
+  \code{\link{general_MT}}, the inversed correlation matrix is used for A and
   the data are normalized based on \code{unit_space_data}.
 }
 \examples{
-# 40 data for versicolor in the iris dataset                            
+# 40 data for versicolor in the iris dataset
 iris_versicolor <- iris[61:100, -5]
 
-unit_space_MT <- MT(unit_space_data = iris_versicolor, 
+unit_space_MT <- MT(unit_space_data = iris_versicolor,
                     includes_transformed_data = TRUE)
-                 
+
 # The following tol is a parameter passed to solve function.
-unit_space_MT <- MT(unit_space_data = iris_versicolor, 
-                    includes_transformed_data = TRUE, 
+unit_space_MT <- MT(unit_space_data = iris_versicolor,
+                    includes_transformed_data = TRUE,
                     tol = 1e-9)
 
 (unit_space_MT$distance)
@@ -59,22 +59,22 @@ unit_space_MT <- MT(unit_space_data = iris_versicolor,
 Taguchi, G. (1995). Pattern Recognition and Quality Engineering (1).
     \emph{Journal of Quality Engineering Society, 3}(2), 2-5. (In Japanese)
 
-  Taguchi, G., Wu, Y., & Chodhury, S. (2000). 
+  Taguchi, G., Wu, Y., & Chodhury, S. (2000).
     \emph{Mahalanobis-Taguchi System.} McGraw-Hill Professional.
-    
-  Taguchi, G., & Jugulum, R. (2002). \emph{The Mahalanobis-Taguchi strategy: 
+
+  Taguchi, G., & Jugulum, R. (2002). \emph{The Mahalanobis-Taguchi strategy:
     A pattern technology system.} John Wiley & Sons.
-    
-  Woodall, W. H., Koudelik, R., Tsui, K. L., Kim, S. B., Stoumbos, Z. G., & 
+
+  Woodall, W. H., Koudelik, R., Tsui, K. L., Kim, S. B., Stoumbos, Z. G., &
     Carvounis, C. P. (2003). A review and analysis of the Mahalanobis-Taguchi
     system. \emph{Technometrics, 45}(1), 1-15.
-    
+
   Tatebayashi, K., Tejima, S., & Hasegawa, R. (2008).
     \emph{Introduction to MT System.} Nikkagiren Press. (In Japanese)
 }
 \seealso{
-\code{\link[base]{solve}}, \code{\link{general_MT}}, 
-           \code{\link{generates_normalization_function}}, and 
+\code{\link[base]{solve}}, \code{\link{general_MT}},
+           \code{\link{generates_normalization_function}}, and
            \code{\link{diagnosis.MT}}
 }
 

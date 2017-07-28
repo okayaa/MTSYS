@@ -5,7 +5,7 @@ Version: 1.0.0
 Date: 2017-07-28
 Authors@R: c(
     person("Akifumi", "Okayama", email = "akifumi.okayama@akane.waseda.jp",
-         role = c("aut", "cre")),
+           role = c("aut", "cre")),
     person("Masato", "Ohkubo", role = "ctb"),
     person("Yasushi", "Nagata", role = "ctb"))
 Description: Mahalanobis-Taguchi (MT) system is a collection of multivariate
@@ -20,10 +20,11 @@ Description: Mahalanobis-Taguchi (MT) system is a collection of multivariate
     the family of T methods. In addition, the Ta and Tb methods, which are the
     improved versions of the T1 method, are included.
 Depends: R (>= 2.10)
+Imports: stats
+Suggests: testthat
 Encoding: UTF-8
 License: MIT + file LICENSE
 RoxygenNote: 5.0.1
-Suggests: testthat
 LazyData: true
 URL: https://github.com/okayaa/MT
 BugReports: https://github.com/okayaa/MT/issues

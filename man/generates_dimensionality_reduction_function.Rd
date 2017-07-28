@@ -2,32 +2,32 @@
 % Please edit documentation in R/generates_transformation_function.R
 \name{generates_dimensionality_reduction_function}
 \alias{generates_dimensionality_reduction_function}
-\title{Function to generate a data transformation function for the 
+\title{Function to generate a data transformation function for the
   Recognition-Taguchi (RT) method}
 \usage{
 generates_dimensionality_reduction_function(unit_space_data)
 }
 \arguments{
-\item{unit_space_data}{Matrix with n rows (samples) and p columns (variables). 
-Data to generate the unit space. All data should be 
+\item{unit_space_data}{Matrix with n rows (samples) and p columns (variables).
+Data to generate the unit space. All data should be
 continuous values and should not have missing values.}
 }
 \value{
-Function is returned which takes an n x p matrix as an (only) 
-          argument and returns a dimensionality-reduced n x 2 data frame with 
+Function is returned which takes an n x p matrix as an (only)
+          argument and returns a dimensionality-reduced n x 2 data frame with
           named columns; Y_1 and Y_2.
 }
 \description{
-\code{generates_dimensionality_reduction_function} returns the data 
-  transformation function for the Recognition-Taguchi (RT) method based on 
-  the \code{unit_space_data}. The function reduces the dimensionality of data 
+\code{generates_dimensionality_reduction_function} returns the data
+  transformation function for the Recognition-Taguchi (RT) method based on
+  the \code{unit_space_data}. The function reduces the dimensionality of data
   into 2 synthetic variables.
 }
 \examples{
-# 40 data for versicolor in the iris dataset                            
-iris_versicolor <- iris[61:100, -5] 
-             
-reduces_dimensionality <- 
+# 40 data for versicolor in the iris dataset
+iris_versicolor <- iris[61:100, -5]
+
+reduces_dimensionality <-
                  generates_dimensionality_reduction_function(iris_versicolor)
 
 is.function(reduces_dimensionality) # TRUE
@@ -36,12 +36,12 @@ is.function(reduces_dimensionality) # TRUE
 \references{
 Taguchi, G. (2006). Objective Function and Generic Function (11).
     \emph{Journal of Quality Engineering Society, 14}(2), 5-9. (In Japanese)
-    
+
   Tatebayashi, K., Tejima, S., & Hasegawa, R. (2008).
-    \emph{Introduction to MT System.} Nikkagiren Press. (In Japanese) 
-    
-  Huda, F., Kajiwara, I., Hosoya, N., & Kawamura, S. (2013). Bolt loosening 
-    analysis and diagnosis by non-contact laser excitation vibration tests. 
+    \emph{Introduction to MT System.} Nikkagiren Press. (In Japanese)
+
+  Huda, F., Kajiwara, I., Hosoya, N., & Kawamura, S. (2013). Bolt loosening
+    analysis and diagnosis by non-contact laser excitation vibration tests.
     \emph{Mechanical systems and signal processing, 40}(2), 589-604.
 }
 \seealso{

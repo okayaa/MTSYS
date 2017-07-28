@@ -9,34 +9,34 @@ forecasting(model, newdata, includes_transformed_newdata)
 \arguments{
 \item{model}{Object generated as a model.}
 
-\item{newdata}{Matrix with n rows (samples) and p columns (variables). The 
-Data to be estimated. All data should be continuous values 
+\item{newdata}{Matrix with n rows (samples) and p columns (variables). The
+Data to be estimated. All data should be continuous values
 and should not have missing values.}
 
-\item{includes_transformed_newdata}{If \code{TRUE}, then the transformed data 
-for \code{newdata} are included in a 
+\item{includes_transformed_newdata}{If \code{TRUE}, then the transformed data
+for \code{newdata} are included in a
 return object.}
 }
 \value{
 A list containing the following components is returned.
 
- \item{M_hat}{Vector with length n. The estimated values of the dependent 
+ \item{M_hat}{Vector with length n. The estimated values of the dependent
                variable after the data trasformation.}
- \item{y_hat}{Vector with length n. The estimated values after the inverse 
+ \item{y_hat}{Vector with length n. The estimated values after the inverse
                transformation from \code{M_hat}.}
  \item{model}{Object passed by \code{model}.}
  \item{n}{The number of samples for \code{newdata}.}
  \item{q}{The number of variables after the data transformation.}
- \item{X}{If \code{includes_transformed_newdata} is \code{TRUE}, then the 
+ \item{X}{If \code{includes_transformed_newdata} is \code{TRUE}, then the
            transformed data for \code{newdata} are included.}
 }
 \description{
-\code{forecasting} is a generic function. For details, see 
-  \code{\link{forecasting.T1}}, \code{\link{forecasting.Ta}}, 
+\code{forecasting} is a generic function. For details, see
+  \code{\link{forecasting.T1}}, \code{\link{forecasting.Ta}},
   \code{\link{forecasting.Tb}} or \code{\link{general_forecasting.T}}.
 }
 \seealso{
-\code{\link{forecasting.T1}}, \code{\link{forecasting.Ta}}, and 
+\code{\link{forecasting.T1}}, \code{\link{forecasting.Ta}}, and
            \code{\link{forecasting.Tb}}
 }
 
