@@ -68,9 +68,6 @@ Taguchi, G. (1995). Pattern Recognition and Quality Engineering (1).
   Woodall, W. H., Koudelik, R., Tsui, K. L., Kim, S. B., Stoumbos, Z. G., &
     Carvounis, C. P. (2003). A review and analysis of the Mahalanobis-Taguchi
     system. \emph{Technometrics, 45}(1), 1-15.
-
-  Tatebayashi, K., Tejima, S., & Hasegawa, R. (2008).
-    \emph{Introduction to MT System.} Nikkagiren Press. (In Japanese)
 }
 \seealso{
 \code{\link[base]{solve}}, \code{\link{general_MT}},

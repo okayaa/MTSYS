@@ -1,6 +1,6 @@
 Package: MT
 Type: Package
-Title: An Implementation of Methods in Mahalanobis-Taguchi (MT) System
+Title: Methods in Mahalanobis-Taguchi (MT) System
 Version: 1.0.0
 Date: 2017-07-28
 Authors@R: c(
@@ -11,10 +11,12 @@ Authors@R: c(
 Description: Mahalanobis-Taguchi (MT) system is a collection of multivariate
     analysis methods developed for the field of quality engineering. MT system
     consists of two families depending on their purpose. One is a family of
-    Mahalanobis-Taguchi (MT) methods (in the broad sense) for diagnosis and the
-    other is a family of Taguchi (T) methods for forecasting. The MT package
-    contains three basic methods for the family of MT methods and one basic
-    method for the family of T methods. The MT method (in the narrow sense), the
+    Mahalanobis-Taguchi (MT) methods (in the broad sense) for diagnosis (see
+    Taguchi, G., Wu, Y., and Chodhury, S. (2000) <ISBN-13: 978-0071362634>) and
+    the other is a family of Taguchi (T) methods for forecasting (see Kawada, H.,
+    and Nagata, Y. (2015) <doi: 10.17929/tqs.1.12>). The MT package contains
+    three basic methods for the family of MT methods and one basic method for
+    the family of T methods. The MT method (in the narrow sense), the
     Mahalanobis-Taguchi Adjoint (MTA) methods, and the Recognition-Taguchi (RT)
     method are for the MT method and the two-sided Taguchi (T1) method is for
     the family of T methods. In addition, the Ta and Tb methods, which are the

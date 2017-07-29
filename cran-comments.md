@@ -1,4 +1,13 @@
-## Resubmission
+## 2nd Resubmission
+This is a resubmission. In this version I have:
+
+* omitted "An Implementation of" in the title.
+
+* added some references in the Description field.
+
+* used the CRAN template for the MIT license.
+
+## 1st Resubmission
 This is a resubmission. In this version I have modified Imports field in the 
 DESCRIPTION file.
 

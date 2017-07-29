@@ -35,9 +35,6 @@
 #'   Taguchi, G., & Jugulum, R. (2002). \emph{The Mahalanobis-Taguchi strategy:
 #'     A pattern technology system.} John Wiley & Sons.
 #'
-#'   Tatebayashi, K., Tejima, S., & Hasegawa, R. (2008).
-#'     \emph{Introduction to MT System.} Nikkagiren Press. (In Japanese)
-#'
 #' @seealso \code{\link{calc_cofactor}}, \code{\link{general_MT}},
 #'            \code{\link{generates_normalization_function}}, and
 #'            \code{\link{diagnosis.MT}}
@@ -111,9 +108,6 @@ MTA <- function(unit_space_data, includes_transformed_data = FALSE) {
 #'
 #'   Taguchi, G., & Jugulum, R. (2002). \emph{The Mahalanobis-Taguchi strategy:
 #'     A pattern technology system.} John Wiley & Sons.
-#'
-#'   Tatebayashi, K., Tejima, S., & Hasegawa, R. (2008).
-#'     \emph{Introduction to MT System.} Nikkagiren Press. (In Japanese)
 #'
 #' @seealso \code{\link{general_diagnosis.MT}} and \code{\link{MTA}}
 #'

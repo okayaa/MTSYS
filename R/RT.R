@@ -36,9 +36,6 @@
 #'   Taguchi, G. (2006). Objective Function and Generic Function (11).
 #'     \emph{Journal of Quality Engineering Society, 14}(2), 5-9. (In Japanese)
 #'
-#'   Tatebayashi, K., Tejima, S., & Hasegawa, R. (2008).
-#'     \emph{Introduction to MT System.} Nikkagiren Press. (In Japanese)
-#'
 #'   Huda, F., Kajiwara, I., Hosoya, N., & Kawamura, S. (2013). Bolt loosening
 #'    analysis and diagnosis by non-contact laser excitation vibration tests.
 #'    \emph{Mechanical systems and signal processing, 40}(2), 589-604.
@@ -117,9 +114,6 @@ RT <- function(unit_space_data, includes_transformed_data = FALSE, ...) {
 #' @references
 #'   Taguchi, G. (2006). Objective Function and Generic Function (11).
 #'     \emph{Journal of Quality Engineering Society, 14}(2), 5-9. (In Japanese)
-#'
-#'   Tatebayashi, K., Tejima, S., & Hasegawa, R. (2008).
-#'     \emph{Introduction to MT System.} Nikkagiren Press. (In Japanese)
 #'
 #'   Huda, F., Kajiwara, I., Hosoya, N., & Kawamura, S. (2013). Bolt loosening
 #'    analysis and diagnosis by non-contact laser excitation vibration tests.

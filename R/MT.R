@@ -43,9 +43,6 @@
 #'     Carvounis, C. P. (2003). A review and analysis of the Mahalanobis-Taguchi
 #'     system. \emph{Technometrics, 45}(1), 1-15.
 #'
-#'   Tatebayashi, K., Tejima, S., & Hasegawa, R. (2008).
-#'     \emph{Introduction to MT System.} Nikkagiren Press. (In Japanese)
-#'
 #' @seealso \code{\link[base]{solve}}, \code{\link{general_MT}},
 #'            \code{\link{generates_normalization_function}}, and
 #'            \code{\link{diagnosis.MT}}
@@ -130,9 +127,6 @@ MT <- function(unit_space_data, includes_transformed_data = FALSE, ...) {
 #'   Woodall, W. H., Koudelik, R., Tsui, K. L., Kim, S. B., Stoumbos, Z. G., &
 #'     Carvounis, C. P. (2003). A review and analysis of the Mahalanobis-Taguchi
 #'     system. \emph{Technometrics, 45}(1), 1-15.
-#'
-#'   Tatebayashi, K., Tejima, S., & Hasegawa, R. (2008).
-#'     \emph{Introduction to MT System.} Nikkagiren Press. (In Japanese)
 #'
 #' @seealso \code{\link{general_diagnosis.MT}} and \code{\link{MT}}
 #'

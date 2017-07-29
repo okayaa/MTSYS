@@ -2,117 +2,114 @@
 % Please edit documentation in R/T1.R
 \name{T1}
 \alias{T1}
-\title{Function to generate a prediction expression for the two-sided Taguchi (T1) 
+\title{Function to generate a prediction expression for the two-sided Taguchi (T1)
   method}
 \usage{
 T1(unit_space_data, signal_space_data, includes_transformed_data = FALSE)
 }
 \arguments{
-\item{unit_space_data}{Matrix with n rows (samples) and (p + 1) columns 
-(variables). The 1 ~ p th columns are independent 
-variables and the (p + 1) th column is a dependent 
-variable. Underlying data to obtain a representative 
-point for the normalization of the 
-\code{signal_space_data}. All data should be 
+\item{unit_space_data}{Matrix with n rows (samples) and (p + 1) columns
+(variables). The 1 ~ p th columns are independent
+variables and the (p + 1) th column is a dependent
+variable. Underlying data to obtain a representative
+point for the normalization of the
+\code{signal_space_data}. All data should be
 continuous values and should not have missing values.}
 
-\item{signal_space_data}{Matrix with m rows (samples) and (p + 1) columns 
-(variables). The 1 ~ p th columns are independent 
-variables and the (p + 1) th column is a dependent 
-variable. Underlying data to generate a prediction 
-expression. All data should be continuous values 
+\item{signal_space_data}{Matrix with m rows (samples) and (p + 1) columns
+(variables). The 1 ~ p th columns are independent
+variables and the (p + 1) th column is a dependent
+variable. Underlying data to generate a prediction
+expression. All data should be continuous values
 and should not have missing values.}
 
-\item{includes_transformed_data}{If \code{TRUE}, then the transformed data 
+\item{includes_transformed_data}{If \code{TRUE}, then the transformed data
 are included in a return object.}
 }
 \value{
 A list containing the following components is returned.
 
- \item{beta_hat}{Vector with length q. Estimated proportionality constants 
-                  between each independent variable and the dependent 
+ \item{beta_hat}{Vector with length q. Estimated proportionality constants
+                  between each independent variable and the dependent
                   variable.}
- \item{eta_hat}{Vector with length q. Estimated squared signal-to-noise 
+ \item{eta_hat}{Vector with length q. Estimated squared signal-to-noise
                  ratios (S/N) coresponding to \code{beta_hat}.}
- \item{M_hat}{Vector with length n. The estimated values of the dependent 
+ \item{M_hat}{Vector with length n. The estimated values of the dependent
                variable after the data transformation for \code{signal_space_data}.}
- \item{overall_prediction_eta}{Numeric. The overall squared signal-to-noise 
+ \item{overall_prediction_eta}{Numeric. The overall squared signal-to-noise
                                 ratio (S/N).}
- \item{transforms_independent_data}{Data transformation function generated 
-                                     from \code{generates_transform_functions} 
-                                     based on the \code{unit_space_data}. The 
-                                     function for independent variables takes 
-                                     independent variable data (a matrix of p 
-                                     columns) as an (only) argument and 
-                                     returns the transformed independent 
+ \item{transforms_independent_data}{Data transformation function generated
+                                     from \code{generates_transform_functions}
+                                     based on the \code{unit_space_data}. The
+                                     function for independent variables takes
+                                     independent variable data (a matrix of p
+                                     columns) as an (only) argument and
+                                     returns the transformed independent
                                      variable data.}
- \item{transforms_dependent_data}{Data transformation function generated from 
-                                   \code{generates_transform_functions} based 
-                                   on the \code{unit_space_data}. The 
-                                   function for a dependent variable takes 
-                                   dependent variable data (a vector) as an 
-                                   (only) argument and returns the 
+ \item{transforms_dependent_data}{Data transformation function generated from
+                                   \code{generates_transform_functions} based
+                                   on the \code{unit_space_data}. The
+                                   function for a dependent variable takes
+                                   dependent variable data (a vector) as an
+                                   (only) argument and returns the
                                    transformed dependent variable data.}
- \item{inverses_dependent_data}{Data transformation function generated 
-                                 from \code{generates_transform_functions} 
-                                 based on the \code{unit_space_data}. The 
-                                 function of the takes the transformed 
-                                 dependent variable data (a vector) as an 
-                                 (only) argument and returns the dependent 
-                                 variable data inversed from the transformed 
+ \item{inverses_dependent_data}{Data transformation function generated
+                                 from \code{generates_transform_functions}
+                                 based on the \code{unit_space_data}. The
+                                 function of the takes the transformed
+                                 dependent variable data (a vector) as an
+                                 (only) argument and returns the dependent
+                                 variable data inversed from the transformed
                                  dependent variable data.}
  \item{m}{The number of samples for \code{signal_space_data}.}
- \item{q}{The number of independent variables after the data transformation. 
+ \item{q}{The number of independent variables after the data transformation.
            q equals p.}
- \item{X}{If \code{includes_transformed_data} is \code{TRUE}, then the 
-           independent variable data after the data transformation for the 
+ \item{X}{If \code{includes_transformed_data} is \code{TRUE}, then the
+           independent variable data after the data transformation for the
            \code{signal_space_data} are included.}
- \item{M}{If \code{includes_transformed_data} is \code{TRUE}, then the (true) 
-           value of the dependent variable after the data transformation for 
+ \item{M}{If \code{includes_transformed_data} is \code{TRUE}, then the (true)
+           value of the dependent variable after the data transformation for
            the \code{signal_space_data} are included.}
 }
 \description{
-\code{T1} generates a prediction expression for the two-sided Taguchi (T1) 
-  method. In \code{\link{general_T}}, the data are normalized by subtracting 
-  the mean and without scaling based on \code{unit_space_data}. The sample 
-  data should be divided into 2 datasets in advance. One is for the unit 
+\code{T1} generates a prediction expression for the two-sided Taguchi (T1)
+  method. In \code{\link{general_T}}, the data are normalized by subtracting
+  the mean and without scaling based on \code{unit_space_data}. The sample
+  data should be divided into 2 datasets in advance. One is for the unit
   space and the other is for the signal space.
 }
 \examples{
-# The value of the dependent variable of the following samples mediates  
+# The value of the dependent variable of the following samples mediates
 # in the stackloss dataset.
-stackloss_center <- stackloss[c(9, 10, 11, 20, 21), ] 
+stackloss_center <- stackloss[c(9, 10, 11, 20, 21), ]
 
-# The following samples are data other than the unit space data and the test 
-# data.   
-stackloss_signal <- stackloss[-c(2, 9, 10, 11, 12, 19, 20, 21), ] 
-    
-model_T1 <- T1(unit_space_data = stackloss_center, 
+# The following samples are data other than the unit space data and the test
+# data.
+stackloss_signal <- stackloss[-c(2, 9, 10, 11, 12, 19, 20, 21), ]
+
+model_T1 <- T1(unit_space_data = stackloss_center,
                signal_space_data = stackloss_signal,
                includes_transformed_data = TRUE)
-                         
+
 (model_T1$M_hat)
 
 }
 \references{
 Taguchi, G. (2006). Objective Function and Generic Function (12).
     \emph{Journal of Quality Engineering Society, 14}(3), 5-9. (In Japanese)
-    
-  Tatebayashi, K., Tejima, S., & Hasegawa, R. (2008).
-    \emph{Introduction to MT System.} Nikkagiren Press. (In Japanese) 
 
-  Inou, A., Nagata, Y., Horita, K., & Mori, A. (2012). Prediciton Accuracies 
-    of Improved Taguchi's T Methods Compared to those of Multiple Regresssion 
-    Analysis. \emph{Journal of the Japanese Society for Quality Control, 
-    42}(2), 103-115. (In Japanese) 
+  Inou, A., Nagata, Y., Horita, K., & Mori, A. (2012). Prediciton Accuracies
+    of Improved Taguchi's T Methods Compared to those of Multiple Regresssion
+    Analysis. \emph{Journal of the Japanese Society for Quality Control,
+    42}(2), 103-115. (In Japanese)
 
-  Kawada, H., & Nagata, Y. (2015). An application of a generalized inverse 
-    regression estimator to Taguchi's T-Method. \emph{Total Quality Science, 
+  Kawada, H., & Nagata, Y. (2015). An application of a generalized inverse
+    regression estimator to Taguchi's T-Method. \emph{Total Quality Science,
     1}(1), 12-21.
 }
 \seealso{
-\code{\link{general_T}}, 
-           \code{\link{generates_transformation_functions_T1}}, and 
+\code{\link{general_T}},
+           \code{\link{generates_transformation_functions_T1}}, and
            \code{\link{forecasting.T1}}
 }
 
