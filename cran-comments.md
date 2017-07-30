@@ -1,3 +1,7 @@
+## 3rd Resubmission
+This is a resubmission. In this version I have used the correct CRAN template 
+for the MIT license.
+
 ## 2nd Resubmission
 This is a resubmission. In this version I have:
 
