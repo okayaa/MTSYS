@@ -1,4 +1,4 @@
 library(testthat)
-library(MT)
+library(MTSYS)
 
-test_check("MT")
+test_check("MTSYS")

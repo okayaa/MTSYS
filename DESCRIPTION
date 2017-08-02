@@ -1,4 +1,4 @@
-Package: MT
+Package: MTSYS
 Type: Package
 Title: Methods in Mahalanobis-Taguchi (MT) System
 Version: 1.0.0
@@ -12,15 +12,16 @@ Description: Mahalanobis-Taguchi (MT) system is a collection of multivariate
     analysis methods developed for the field of quality engineering. MT system
     consists of two families depending on their purpose. One is a family of
     Mahalanobis-Taguchi (MT) methods (in the broad sense) for diagnosis (see
-    Taguchi, G., Wu, Y., and Chodhury, S. (2000) <ISBN-13: 978-0071362634>) and
-    the other is a family of Taguchi (T) methods for forecasting (see Kawada, H.,
-    and Nagata, Y. (2015) <doi: 10.17929/tqs.1.12>). The MT package contains
-    three basic methods for the family of MT methods and one basic method for
-    the family of T methods. The MT method (in the narrow sense), the
-    Mahalanobis-Taguchi Adjoint (MTA) methods, and the Recognition-Taguchi (RT)
-    method are for the MT method and the two-sided Taguchi (T1) method is for
-    the family of T methods. In addition, the Ta and Tb methods, which are the
-    improved versions of the T1 method, are included.
+    Woodall, W. H., Koudelik, R., Tsui, K. L., Kim, S. B., Stoumbos, Z. G., and
+    Carvounis, C. P. (2003) <doi:10.1198/004017002188618626>) and the other is a
+    family of Taguchi (T) methods for forecasting (see Kawada, H., and Nagata, Y.
+    (2015) <doi:10.17929/tqs.1.12>). The MT package contains three basic methods
+    for the family of MT methods and one basic method for the family of T
+    methods. The MT method (in the narrow sense), the Mahalanobis-Taguchi
+    Adjoint (MTA) methods, and the Recognition-Taguchi (RT) method are for the
+    MT method and the two-sided Taguchi (T1) method is for the family of T
+    methods. In addition, the Ta and Tb methods, which are the improved versions
+    of the T1 method, are included.
 Depends: R (>= 2.10)
 Imports: stats
 Suggests: testthat
@@ -28,5 +29,5 @@ Encoding: UTF-8
 License: MIT + file LICENSE
 RoxygenNote: 5.0.1
 LazyData: true
-URL: https://github.com/okayaa/MT
-BugReports: https://github.com/okayaa/MT/issues
+URL: https://github.com/okayaa/MTSYS
+BugReports: https://github.com/okayaa/MTSYS/issues

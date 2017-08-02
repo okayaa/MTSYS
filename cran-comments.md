@@ -1,3 +1,14 @@
+## 4th Resubmission
+This is a resubmission. In this version I have:
+
+* changed the package name to "MTSYS" from "MT" to be longer and more 
+self-descriptive name.
+
+* deleted space after "doi:". 
+
+* changed a reference to an appropriate paper from the book in the Description 
+field.
+
 ## 3rd Resubmission
 This is a resubmission. In this version I have used the correct CRAN template 
 for the MIT license.
