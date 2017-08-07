@@ -23,3 +23,7 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" && "$TRAVIS_R_VERSION" == "devel" ]];
       then Rscript -e 'if(!"testthat" %in% rownames(installed.packages())) {
         install.packages("testthat", dependencies = TRUE) }'; fi
+
+after_success:
+  - if [[ "$TRAVIS_OS_NAME" == "linux" && "$TRAVIS_R_VERSION" == "release" ]];
+      then Rscript -e 'covr::codecov()'; fi

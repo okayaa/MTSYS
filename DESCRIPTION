@@ -1,7 +1,7 @@
 Package: MTSYS
 Type: Package
 Title: Methods in Mahalanobis-Taguchi (MT) System
-Version: 1.0.1
+Version: 1.0.2
 Date: 2017-07-28
 Authors@R: c(
     person("Akifumi", "Okayama", email = "akifumi.okayama@akane.waseda.jp",
@@ -24,7 +24,7 @@ Description: Mahalanobis-Taguchi (MT) system is a collection of multivariate
     of the T1 method, are included.
 Depends: R (>= 2.10)
 Imports: stats
-Suggests: testthat
+Suggests: testthat, covr
 Encoding: UTF-8
 License: MIT + file LICENSE
 RoxygenNote: 5.0.1
