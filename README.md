@@ -1,7 +1,7 @@
 MTSYS
 =====
 
-[![Travis-CI Build Status](https://travis-ci.org/okayaa/MTSYS.svg?branch=master)](https://travis-ci.org/okayaa/MTSYS) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/MTSYS)](http://cran.r-project.org/package=MTSYS) [![Coverage Status](https://img.shields.io/codecov/c/github/okayaa/MTSYS/master.svg)](https://codecov.io/github/okayaa/MTSYS?branch=master)
+[![Travis-CI Build Status](https://travis-ci.org/okayaa/MTSYS.svg?branch=master)](https://travis-ci.org/okayaa/MTSYS) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/MTSYS)](https://CRAN.R-project.org/package=MTSYS) [![Coverage Status](https://img.shields.io/codecov/c/github/okayaa/MTSYS/master.svg)](https://codecov.io/github/okayaa/MTSYS?branch=master)
 
 MTSYS provides a collection of multivariate analysis methods in 
 Mahalanobis-Taguchi System (MTS), which was developed for the field of quality 
