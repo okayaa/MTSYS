@@ -16,19 +16,19 @@ should not have missing values.}
 \code{generates_transformation_functions_Tb} returns a list 
           containing three functions. For the first component, the data 
           transformation function for independent variables is a function 
-          that subtracts the center of each independent variable. For the 
-          second component, the data transformation function for a dependent 
-          variable is a function that subtracts the weighted mean of a 
-          dependent variable. For the third component, the inverse function 
-          of the data transformation function for a dependent variable is a 
-          function that adds the weighted mean of a dependent variable. The 
-          center is determined in a specific manner for the Tb method. The 
-          center consists of each sample value which maximizes the 
-          signal-to-noise ratio (S/N) per variable. The values are determined 
+          that subtracts the center of each independent variable. The center 
+          is determined in a specific manner for the Tb method. The center 
+          consists of each sample value which maximizes the signal-to-noise 
+          ratio (S/N) per independent variable. The values are determined 
           independently so that different samples may be selected for 
-          different variables. The weighted mean is calculated as the 
-          frequency of being selected in independent variables, similar to 
-          the center of the dependent variable.
+          different variables. For the second component, the data 
+          transformation function for a dependent variable is a function that 
+          subtracts the dependent variable of the sample which maximizes the 
+          S/N per independent variable. For the third component, the inverse 
+          function of the data transformation function for a dependent 
+          variable is a function that adds the weighted mean of a dependent 
+          variable. The weighted mean is calculated based on the S/N and the 
+          frequency of being selected in independent variables.
 }
 \description{
 \code{generates_transformation_functions_Tb} is the argument for the 
@@ -42,11 +42,11 @@ stackloss_center <- stackloss[c(9, 10, 11, 20, 21), ]
     
 tmp <- generates_transformation_functions_Tb(stackloss_center)
 center_subtraction_function <- tmp[[1]]
-subtracts_M_0 <- tmp[[2]]
+subtracts_ys <- tmp[[2]]
 adds_M_0 <- tmp[[3]] 
 
 is.function(center_subtraction_function) # TRUE
-is.function(subtracts_M_0) # TRUE
+is.function(subtracts_ys) # TRUE
 is.function(adds_M_0) # TRUE
 
 }

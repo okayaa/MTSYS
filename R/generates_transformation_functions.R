@@ -71,19 +71,19 @@ generates_transformation_functions_T1 <- function(unit_space_data) {
 #' @return \code{generates_transformation_functions_Tb} returns a list 
 #'           containing three functions. For the first component, the data 
 #'           transformation function for independent variables is a function 
-#'           that subtracts the center of each independent variable. For the 
-#'           second component, the data transformation function for a dependent 
-#'           variable is a function that subtracts the weighted mean of a 
-#'           dependent variable. For the third component, the inverse function 
-#'           of the data transformation function for a dependent variable is a 
-#'           function that adds the weighted mean of a dependent variable. The 
-#'           center is determined in a specific manner for the Tb method. The 
-#'           center consists of each sample value which maximizes the 
-#'           signal-to-noise ratio (S/N) per variable. The values are determined 
+#'           that subtracts the center of each independent variable. The center 
+#'           is determined in a specific manner for the Tb method. The center 
+#'           consists of each sample value which maximizes the signal-to-noise 
+#'           ratio (S/N) per independent variable. The values are determined 
 #'           independently so that different samples may be selected for 
-#'           different variables. The weighted mean is calculated as the 
-#'           frequency of being selected in independent variables, similar to 
-#'           the center of the dependent variable.
+#'           different variables. For the second component, the data 
+#'           transformation function for a dependent variable is a function that 
+#'           subtracts the dependent variable of the sample which maximizes the 
+#'           S/N per independent variable. For the third component, the inverse 
+#'           function of the data transformation function for a dependent 
+#'           variable is a function that adds the weighted mean of a dependent 
+#'           variable. The weighted mean is calculated based on the S/N and the 
+#'           frequency of being selected in independent variables.
 #' 
 #' @references
 #'   Inou, A., Nagata, Y., Horita, K., & Mori, A. (2012). Prediciton Accuracies 
@@ -104,11 +104,11 @@ generates_transformation_functions_T1 <- function(unit_space_data) {
 #'     
 #' tmp <- generates_transformation_functions_Tb(stackloss_center)
 #' center_subtraction_function <- tmp[[1]]
-#' subtracts_M_0 <- tmp[[2]]
+#' subtracts_ys <- tmp[[2]]
 #' adds_M_0 <- tmp[[3]] 
 #' 
 #' is.function(center_subtraction_function) # TRUE
-#' is.function(subtracts_M_0) # TRUE
+#' is.function(subtracts_ys) # TRUE
 #' is.function(adds_M_0) # TRUE
 #' 
 #' @export
@@ -131,20 +131,18 @@ generates_transformation_functions_Tb <- function(sample_data) {
 
   unit_space_center <- 
                  diag(as.matrix(sample_data[max_eta_index, -ncol(sample_data)]))
-  
-  #M_0 <- sum(etas / sum(etas) * sample_data[max_eta_index, ncol(sample_data)])
-  max_eta <- diag(as.matrix(etas[, max_eta_index]))
-  M_0 <- 
-     sum(max_eta / sum(max_eta) * sample_data[max_eta_index, ncol(sample_data)])
-  
   subtracts_center <- 
          generates_normalization_function(unit_space_center = unit_space_center,
                                           is_scaled = FALSE)
-  
-  subtracts_M_0 <- function(x) x - M_0
-  
+
+  subtracts_ys <- function(x) 
+        sapply(sample_data[max_eta_index, ncol(sample_data)], function(y) x - y)
+
+  max_eta <- diag(as.matrix(etas[, max_eta_index]))
+  M_0 <- 
+     sum(max_eta / sum(max_eta) * sample_data[max_eta_index, ncol(sample_data)])
   adds_M_0 <- function(x) x + M_0
   
-  return(list(subtracts_center, subtracts_M_0, adds_M_0))
+  return(list(subtracts_center, subtracts_ys, adds_M_0))
   
 }

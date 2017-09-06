@@ -148,7 +148,10 @@ general_T <- function(unit_space_data,
   X <- transforms_independent_data(signal_space_data_x)
   M <- transforms_dependent_data(signal_space_data_y)
   
-  r <- sum(M ^ 2)
+  # To correspond to the Tb method, apply(as.matrix(.), 2, sum) is used for 
+  # calculating "r".
+  r <- apply(as.matrix(M) ^ 2, 2, sum)
+  
   S_T <- apply(X ^ 2, 2, sum)
   S_beta <- apply(X * M, 2, sum) ^ 2 / r
   S_e <- S_T - S_beta
@@ -162,6 +165,10 @@ general_T <- function(unit_space_data,
   M_hat <- calc_M_hat(X, beta_hat, eta_hat)
   
   #y_hat <- M_hat + M_0
+
+  # To correspond to the Tb method, the inverse of the inverse of the 
+  # transformed dependent data needs to be derived here.
+  M <- -1 * inverses_transformed_dependent_data(-1 * signal_space_data_y)
   
   overall_prediction_eta <- calc_overall_predicton_eta(M, M_hat)
   
