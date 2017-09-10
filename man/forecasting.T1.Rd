@@ -46,6 +46,7 @@ stackloss_signal <- stackloss[-c(2, 9, 10, 11, 12, 19, 20, 21), ]
 
 model_T1 <- T1(unit_space_data = stackloss_center,
                signal_space_data = stackloss_signal,
+               subtracts_V_e = TRUE,
                includes_transformed_data = TRUE)
 
 # The following test samples are chosen casually.

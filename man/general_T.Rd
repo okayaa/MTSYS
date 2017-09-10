@@ -2,130 +2,137 @@
 % Please edit documentation in R/general_T.R
 \name{general_T}
 \alias{general_T}
-\title{General function to generate a prediction expression for a family of Taguchi 
+\title{General function to generate a prediction expression for a family of Taguchi
   (T) methods}
 \usage{
 general_T(unit_space_data, signal_space_data, generates_transform_functions,
-  includes_transformed_data = FALSE)
+  subtracts_V_e = TRUE, includes_transformed_data = FALSE)
 }
 \arguments{
-\item{unit_space_data}{Matrix with n rows (samples) and (p + 1) columns 
-(variables). The 1 ~ p th columns are independent 
-variables and the (p + 1) th column is a dependent 
-variable. Underlying data to obtain a representative 
-point for the normalization of the 
-\code{signal_space_data}. All data should be 
+\item{unit_space_data}{Matrix with n rows (samples) and (p + 1) columns
+(variables). The 1 ~ p th columns are independent
+variables and the (p + 1) th column is a dependent
+variable. Underlying data to obtain a representative
+point for the normalization of the
+\code{signal_space_data}. All data should be
 continuous values and should not have missing values.}
 
-\item{signal_space_data}{Matrix with m rows (samples) and (p + 1) columns 
-(variables). The 1 ~ p th columns are independent 
-variables and the (p + 1) th column is a dependent 
-variable. Underlying data to generate a prediction 
-expression. All data should be continuous values 
+\item{signal_space_data}{Matrix with m rows (samples) and (p + 1) columns
+(variables). The 1 ~ p th columns are independent
+variables and the (p + 1) th column is a dependent
+variable. Underlying data to generate a prediction
+expression. All data should be continuous values
 and should not have missing values.}
 
-\item{generates_transform_functions}{A function that takes the 
-\code{unit_space_data} as an (only) 
-argument and returns a list containing 
-three functions. A data transformation 
-function for independent variables is 
-the first component, a data 
-transformation function for a 
-dependent variable is the second 
-component, and an inverse function of 
-the data transformation function for a 
-dependent variable is the third 
-component. The data transformation 
-function for independent variables 
-takes independent variable data (a 
-matrix of p columns) as an (only) 
-argument and returns the transformed 
-independent variable data. The data 
-transformation function for a 
-dependent variable takes dependent 
-variable data (a vector) as an (only) 
-argument and returns the transformed 
-dependent variable data. The inverse 
-function of the data transformation 
-for a dependent variable takes the 
-transformed dependent variable data (a 
-vector) as an (only) argument and 
-returns the untransformed dependent 
+\item{generates_transform_functions}{A function that takes the
+\code{unit_space_data} as an (only)
+argument and returns a list containing
+three functions. A data transformation
+function for independent variables is
+the first component, a data
+transformation function for a
+dependent variable is the second
+component, and an inverse function of
+the data transformation function for a
+dependent variable is the third
+component. The data transformation
+function for independent variables
+takes independent variable data (a
+matrix of p columns) as an (only)
+argument and returns the transformed
+independent variable data. The data
+transformation function for a
+dependent variable takes dependent
+variable data (a vector) as an (only)
+argument and returns the transformed
+dependent variable data. The inverse
+function of the data transformation
+for a dependent variable takes the
+transformed dependent variable data (a
+vector) as an (only) argument and
+returns the untransformed dependent
 variable data.}
 
-\item{includes_transformed_data}{If \code{TRUE}, then the transformed data 
+\item{subtracts_V_e}{If \code{TRUE}, then the error variance is subtracted in
+the numerator when calculating \code{eta_hat}.}
+
+\item{includes_transformed_data}{If \code{TRUE}, then the transformed data
 are included in a return object.}
 }
 \value{
 A list containing the following components is returned.
 
- \item{beta_hat}{Vector with length q. Estimated proportionality constants 
-                  between each independent variable and the dependent 
+ \item{beta_hat}{Vector with length q. Estimated proportionality constants
+                  between each independent variable and the dependent
                   variable.}
- \item{eta_hat}{Vector with length q. Estimated squared signal-to-noise 
+ \item{subtracts_V_e}{Logical. If \code{TRUE}, then \code{eta_hat} was
+                       calculated without subtracting the error variance in
+                       the numerator.}
+ \item{eta_hat}{Vector with length q. Estimated squared signal-to-noise
                  ratios (S/N) coresponding to \code{beta_hat}.}
- \item{M_hat}{Vector with length n. The estimated values of the dependent 
-               variable after the data transformation for 
-               \code{signal_space_data}.} 
- \item{overall_prediction_eta}{Numeric. The overall squared signal-to-noise 
+ \item{M_hat}{Vector with length n. The estimated values of the dependent
+               variable after the data transformation for
+               \code{signal_space_data}.}
+ \item{overall_prediction_eta}{Numeric. The overall squared signal-to-noise
                                 ratio (S/N).}
- \item{transforms_independent_data}{Data transformation function generated 
-                                     from \code{generates_transform_functions} 
-                                     based on \code{unit_space_data}. The 
-                                     function for independent variables takes 
-                                     independent variable data (a matrix of p 
-                                     columns) as an (only) argument and 
-                                     returns the transformed independent 
+ \item{transforms_independent_data}{Data transformation function generated
+                                     from \code{generates_transform_functions}
+                                     based on \code{unit_space_data}. The
+                                     function for independent variables takes
+                                     independent variable data (a matrix of p
+                                     columns) as an (only) argument and
+                                     returns the transformed independent
                                      variable data.}
- \item{transforms_dependent_data}{Data transformation function generated in 
-                                   \code{generates_transform_functions} based 
-                                   on the \code{unit_space_data}. The 
-                                   function for a dependent variable takes 
-                                   dependent variable data (a vector) as an 
-                                   (only) argument and returns the 
+ \item{transforms_dependent_data}{Data transformation function generated in
+                                   \code{generates_transform_functions} based
+                                   on the \code{unit_space_data}. The
+                                   function for a dependent variable takes
+                                   dependent variable data (a vector) as an
+                                   (only) argument and returns the
                                    transformed dependent variable data.}
- \item{inverses_transformed_dependent_data}{Inverse function generated in the 
-                                             \code{generates_transform_functions} 
-                                             based on \code{unit_space_data}. 
-                                             The function of the takes the 
-                                             transformed dependent variable 
-                                             data (a vector) as an (only) 
-                                             argument and returns the 
-                                             dependent variable data inversed 
-                                             from the transformed dependent 
+ \item{inverses_transformed_dependent_data}{Inverse function generated in the
+                                             \code{generates_transform_functions}
+                                             based on \code{unit_space_data}.
+                                             The function of the takes the
+                                             transformed dependent variable
+                                             data (a vector) as an (only)
+                                             argument and returns the
+                                             dependent variable data inversed
+                                             from the transformed dependent
                                              variable data.}
  \item{m}{The number of samples for \code{signal_space_data}.}
- \item{q}{The number of independent variables after the data transformation. 
-           According to the data transoformation function, q may be equal to 
+ \item{q}{The number of independent variables after the data transformation.
+           According to the data transoformation function, q may be equal to
            p.}
- \item{X}{If \code{includes_transformed_data} is \code{TRUE}, then the 
-           independent variable data after the data transformation for the 
+ \item{X}{If \code{includes_transformed_data} is \code{TRUE}, then the
+           independent variable data after the data transformation for the
            \code{signal_space_data} are included.}
- \item{M}{If \code{includes_transformed_data} is \code{TRUE}, then the (true) 
-           value of the dependent variable after the data transformation for 
+ \item{M}{If \code{includes_transformed_data} is \code{TRUE}, then the (true)
+           value of the dependent variable after the data transformation for
            the \code{signal_space_data} are included.}
 }
 \description{
-\code{general_T} is a (higher-order) general function that generates a 
-  prediction expression for a family of Taguchi (T) methods. Each T method 
+\code{general_T} is a (higher-order) general function that generates a
+  prediction expression for a family of Taguchi (T) methods. Each T method
   can be implemented by setting the parameters of this function appropriately.
 }
 \examples{
-# The value of the dependent variable of the following samples mediates  
+# The value of the dependent variable of the following samples mediates
 # in the stackloss dataset.
-stackloss_center <- stackloss[c(9, 10, 11, 20, 21), ] 
+stackloss_center <- stackloss[c(9, 10, 11, 20, 21), ]
 
-# The following samples are data other than the unit space data and the test 
-# data.   
-stackloss_signal <- stackloss[-c(2, 9, 10, 11, 12, 19, 20, 21), ] 
+# The following samples are data other than the unit space data and the test
+# data.
+stackloss_signal <- stackloss[-c(2, 9, 10, 11, 12, 19, 20, 21), ]
 
-# The following settings are same as the T1 method.             
-model <- general_T(unit_space_data = stackloss_center, 
+# The following settings are same as the T1 method.
+model <- general_T(unit_space_data = stackloss_center,
                    signal_space_data = stackloss_signal,
-                   generates_transform_functions = 
-                                       generates_transformation_functions_T1, 
+                   generates_transform_functions =
+                                       generates_transformation_functions_T1,
+                   subtracts_V_e = TRUE,
                    includes_transformed_data = TRUE)
-                         
+
 (model$M_hat)
 
 }

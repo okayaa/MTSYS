@@ -2,7 +2,7 @@
 % Please edit documentation in R/general_T.R
 \name{general_forecasting.T}
 \alias{general_forecasting.T}
-\title{General function to implement a forecasting method for a family of Taguchi (T) 
+\title{General function to implement a forecasting method for a family of Taguchi (T)
   methods}
 \usage{
 general_forecasting.T(model, newdata, includes_transformed_newdata = FALSE)
@@ -10,63 +10,64 @@ general_forecasting.T(model, newdata, includes_transformed_newdata = FALSE)
 \arguments{
 \item{model}{Object generated as a model.}
 
-\item{newdata}{Matrix with n rows (samples) and p columns (variables). The 
-data are used to calculate the desired distances from the 
-unit space. All data should be continuous values and should 
+\item{newdata}{Matrix with n rows (samples) and p columns (variables). The
+data are used to calculate the desired distances from the
+unit space. All data should be continuous values and should
 not have missing values.}
 
-\item{includes_transformed_newdata}{If \code{TRUE}, then the transformed data 
-for \code{newdata} are included in a 
+\item{includes_transformed_newdata}{If \code{TRUE}, then the transformed data
+for \code{newdata} are included in a
 return object.}
 }
 \value{
 A list containing the following components is returned.
 
- \item{M_hat}{Vector with length n. The estimated values of the dependent 
+ \item{M_hat}{Vector with length n. The estimated values of the dependent
                variable after the data trasformation.}
- \item{y_hat}{Vector with length n. The estimated values after the inverse 
+ \item{y_hat}{Vector with length n. The estimated values after the inverse
                transformation from \code{M_hat}.}
  \item{model}{Object passed by \code{model}.}
  \item{n}{The number of samples for \code{newdata}.}
  \item{q}{The number of variables after the data transformation.}
- \item{X}{If \code{includes_transformed_newdata} is \code{TRUE}, then the 
+ \item{X}{If \code{includes_transformed_newdata} is \code{TRUE}, then the
            transformed data for \code{newdata} are included.}
 }
 \description{
-\code{general_forecasting.T} is the general function that implements a 
-  forecasting method for a family of Taguchi (T) methods. Each forecasting 
-  method of a family of T methods can be implemented by setting the 
+\code{general_forecasting.T} is the general function that implements a
+  forecasting method for a family of Taguchi (T) methods. Each forecasting
+  method of a family of T methods can be implemented by setting the
   parameters of this function appropriately.
 }
 \examples{
-# The value of the dependent variable of the following samples mediates  
+# The value of the dependent variable of the following samples mediates
 # in the stackloss dataset.
-stackloss_center <- stackloss[c(9, 10, 11, 20, 21), ] 
+stackloss_center <- stackloss[c(9, 10, 11, 20, 21), ]
 
-# The following samples are data other than the unit space data and the test 
-# data.   
-stackloss_signal <- stackloss[-c(2, 9, 10, 11, 12, 19, 20, 21), ] 
+# The following samples are data other than the unit space data and the test
+# data.
+stackloss_signal <- stackloss[-c(2, 9, 10, 11, 12, 19, 20, 21), ]
 
-# The following settings are same as the T1 method. 
-model <- general_T(unit_space_data = stackloss_center, 
+# The following settings are same as the T1 method.
+model <- general_T(unit_space_data = stackloss_center,
                    signal_space_data = stackloss_signal,
-                   generates_transform_functions = 
-                                       generates_transformation_functions_T1, 
+                   generates_transform_functions =
+                                       generates_transformation_functions_T1,
+                   subtracts_V_e = TRUE,
                    includes_transformed_data = TRUE)
-                   
-# The following test samples are chosen casually. 
-stackloss_test <- stackloss[c(2, 12, 19), -4] 
 
-forecasting <- general_forecasting.T(model = model, 
-                                     newdata = stackloss_test, 
+# The following test samples are chosen casually.
+stackloss_test <- stackloss[c(2, 12, 19), -4]
+
+forecasting <- general_forecasting.T(model = model,
+                                     newdata = stackloss_test,
                                      includes_transformed_newdata = TRUE)
-                              
+
 (forecasting$y_hat) # Estimated values
 (stackloss[c(2, 12, 19), 4]) # True values
 
 }
 \seealso{
-\code{\link{forecasting.T1}}, \code{\link{forecasting.Ta}}, and 
+\code{\link{forecasting.T1}}, \code{\link{forecasting.Ta}}, and
            \code{\link{forecasting.Tb}}
 }
 

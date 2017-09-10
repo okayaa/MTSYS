@@ -5,7 +5,8 @@
 \title{Function to generate a prediction expression for the two-sided Taguchi (T1)
   method}
 \usage{
-T1(unit_space_data, signal_space_data, includes_transformed_data = FALSE)
+T1(unit_space_data, signal_space_data, subtracts_V_e = TRUE,
+  includes_transformed_data = FALSE)
 }
 \arguments{
 \item{unit_space_data}{Matrix with n rows (samples) and (p + 1) columns
@@ -23,6 +24,9 @@ variable. Underlying data to generate a prediction
 expression. All data should be continuous values
 and should not have missing values.}
 
+\item{subtracts_V_e}{If \code{TRUE}, then the error variance is subtracted in
+the numerator when calculating \code{eta_hat}.}
+
 \item{includes_transformed_data}{If \code{TRUE}, then the transformed data
 are included in a return object.}
 }
@@ -32,6 +36,9 @@ A list containing the following components is returned.
  \item{beta_hat}{Vector with length q. Estimated proportionality constants
                   between each independent variable and the dependent
                   variable.}
+ \item{subtracts_V_e}{Logical. If \code{TRUE}, then \code{eta_hat} was
+                       calculated without subtracting the error variance in
+                       the numerator.}
  \item{eta_hat}{Vector with length q. Estimated squared signal-to-noise
                  ratios (S/N) coresponding to \code{beta_hat}.}
  \item{M_hat}{Vector with length n. The estimated values of the dependent
@@ -89,6 +96,7 @@ stackloss_signal <- stackloss[-c(2, 9, 10, 11, 12, 19, 20, 21), ]
 
 model_T1 <- T1(unit_space_data = stackloss_center,
                signal_space_data = stackloss_signal,
+               subtracts_V_e = TRUE,
                includes_transformed_data = TRUE)
 
 (model_T1$M_hat)

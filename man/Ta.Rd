@@ -4,90 +4,97 @@
 \alias{Ta}
 \title{Function to generate a prediction expression for the Ta method}
 \usage{
-Ta(sample_data, includes_transformed_data = FALSE)
+Ta(sample_data, subtracts_V_e = TRUE, includes_transformed_data = FALSE)
 }
 \arguments{
-\item{sample_data}{Matrix with n rows (samples) and (p + 1) columns 
-(variables). The 1 ~ p th columns are independent 
-variables and the (p + 1) th column is a dependent 
-variable. All data should be continuous values and 
+\item{sample_data}{Matrix with n rows (samples) and (p + 1) columns
+(variables). The 1 ~ p th columns are independent
+variables and the (p + 1) th column is a dependent
+variable. All data should be continuous values and
 should not have missing values.}
 
-\item{includes_transformed_data}{If \code{TRUE}, then the transformed data 
+\item{subtracts_V_e}{If \code{TRUE}, then the error variance is subtracted in
+the numerator when calculating \code{eta_hat}.}
+
+\item{includes_transformed_data}{If \code{TRUE}, then the transformed data
 are included in a return object.}
 }
 \value{
 A list containing the following components is returned.
 
- \item{beta_hat}{Vector with length q. Estimated proportionality constants 
-                  between each independent variable and the dependent 
+ \item{beta_hat}{Vector with length q. Estimated proportionality constants
+                  between each independent variable and the dependent
                   variable.}
- \item{eta_hat}{Vector with length q. Estimated squared signal-to-noise 
+ \item{subtracts_V_e}{Logical. If \code{TRUE}, then \code{eta_hat} was
+                       calculated without subtracting the error variance in
+                       the numerator.}
+ \item{eta_hat}{Vector with length q. Estimated squared signal-to-noise
                  ratios (S/N) coresponding to \code{beta_hat}.}
- \item{M_hat}{Vector with length n. The estimated values of the dependent 
+ \item{M_hat}{Vector with length n. The estimated values of the dependent
                variable after the data transformation for \code{sample_data}.}
- \item{overall_prediction_eta}{Numeric. The overall squared signal-to-noise 
+ \item{overall_prediction_eta}{Numeric. The overall squared signal-to-noise
                                 ratio (S/N).}
- \item{transforms_independent_data}{Data transformation function generated 
-                                     from \code{generates_transform_functions} 
-                                     based on the \code{unit_space_data}. The 
-                                     function for independent variables takes 
-                                     independent variable data (a matrix of p 
-                                     columns) as an (only) argument and 
-                                     returns the transformed independent 
+ \item{transforms_independent_data}{Data transformation function generated
+                                     from \code{generates_transform_functions}
+                                     based on the \code{unit_space_data}. The
+                                     function for independent variables takes
+                                     independent variable data (a matrix of p
+                                     columns) as an (only) argument and
+                                     returns the transformed independent
                                      variable data.}
- \item{transforms_dependent_data}{Data transformation function generated from 
-                                   \code{generates_transform_functions} based 
-                                   on the \code{unit_space_data}. The 
-                                   function for a dependent variable takes 
-                                   dependent variable data (a vector) as an 
-                                   (only) argument and returns the 
+ \item{transforms_dependent_data}{Data transformation function generated from
+                                   \code{generates_transform_functions} based
+                                   on the \code{unit_space_data}. The
+                                   function for a dependent variable takes
+                                   dependent variable data (a vector) as an
+                                   (only) argument and returns the
                                    transformed dependent variable data.}
- \item{inverses_dependent_data}{Data transformation function generated 
-                                 from \code{generates_transform_functions} 
-                                 based on the \code{unit_space_data}. The 
-                                 function of the takes the transformed 
-                                 dependent variable data (a vector) as an 
-                                 (only) argument and returns the dependent 
-                                 variable data inversed from the transformed 
+ \item{inverses_dependent_data}{Data transformation function generated
+                                 from \code{generates_transform_functions}
+                                 based on the \code{unit_space_data}. The
+                                 function of the takes the transformed
+                                 dependent variable data (a vector) as an
+                                 (only) argument and returns the dependent
+                                 variable data inversed from the transformed
                                  dependent variable data.}
  \item{m}{The number of samples for \code{sample_data}.}
- \item{q}{The number of independent variables after the data transformation. 
+ \item{q}{The number of independent variables after the data transformation.
            q equals p.}
- \item{X}{If \code{includes_transformed_data} is \code{TRUE}, then the 
-           independent variable data after the data transformation for the 
+ \item{X}{If \code{includes_transformed_data} is \code{TRUE}, then the
+           independent variable data after the data transformation for the
            \code{sample_data} are included.}
- \item{M}{If \code{includes_transformed_data} is \code{TRUE}, then the (true) 
-           value of the dependent variable after the data transformation for 
+ \item{M}{If \code{includes_transformed_data} is \code{TRUE}, then the (true)
+           value of the dependent variable after the data transformation for
            the \code{sample_data} are included.}
 }
 \description{
-\code{Ta} generates a prediction expression for the Ta method. In 
+\code{Ta} generates a prediction expression for the Ta method. In
   \code{\link{general_T}}, the data are normalized by subtracting the mean
-  and without scaling based on \code{sample_data}. The sample data are not 
-  divided into 2 datasets. All the sample data are used for both unit space 
+  and without scaling based on \code{sample_data}. The sample data are not
+  divided into 2 datasets. All the sample data are used for both unit space
   and signal space.
 }
 \examples{
-model_Ta <- Ta(sample_data = stackloss[-c(2, 12, 19), ], 
+model_Ta <- Ta(sample_data = stackloss[-c(2, 12, 19), ],
+               subtracts_V_e = TRUE,
                includes_transformed_data = TRUE)
-                         
+
 (model_Ta$M_hat)
 
 }
 \references{
-Inou, A., Nagata, Y., Horita, K., & Mori, A. (2012). Prediciton Accuracies 
-    of Improved Taguchi's T Methods Compared to those of Multiple Regresssion 
-    Analysis. \emph{Journal of the Japanese Society for Quality Control, 
-    42}(2), 103-115. (In Japanese) 
+Inou, A., Nagata, Y., Horita, K., & Mori, A. (2012). Prediciton Accuracies
+    of Improved Taguchi's T Methods Compared to those of Multiple Regresssion
+    Analysis. \emph{Journal of the Japanese Society for Quality Control,
+    42}(2), 103-115. (In Japanese)
 
-  Kawada, H., & Nagata, Y. (2015). An application of a generalized inverse 
-    regression estimator to Taguchi's T-Method. \emph{Total Quality Science, 
+  Kawada, H., & Nagata, Y. (2015). An application of a generalized inverse
+    regression estimator to Taguchi's T-Method. \emph{Total Quality Science,
     1}(1), 12-21.
 }
 \seealso{
-\code{\link{general_T}}, 
-           \code{\link{generates_transformation_functions_T1}}, and 
+\code{\link{general_T}},
+           \code{\link{generates_transformation_functions_T1}}, and
            \code{\link{forecasting.Ta}}
 }
 

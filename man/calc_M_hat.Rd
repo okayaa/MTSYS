@@ -7,15 +7,15 @@
 calc_M_hat(X, beta_hat, eta_hat)
 }
 \arguments{
-\item{X}{Matrix with n rows (samples) and q columns (variables). The 
-independent variable data after the data transformation. All data 
+\item{X}{Matrix with n rows (samples) and q columns (variables). The
+independent variable data after the data transformation. All data
 should be continuous values and should not have missing values.}
 
-\item{beta_hat}{Vector with length q. Estimated proportionality constants 
-between each independent variable and the dependent 
+\item{beta_hat}{Vector with length q. Estimated proportionality constants
+between each independent variable and the dependent
 variable.}
 
-\item{eta_hat}{Vector with length q. Estimated squared signal-to-noise ratios 
+\item{eta_hat}{Vector with length q. Estimated squared signal-to-noise ratios
 (S/N) coresponding to \code{beta_hat}.}
 }
 \value{
@@ -25,24 +25,24 @@ Vector with length n. Estimated M values (M hat).
 \code{calc_M_hat} estimates M values (M hat) for the T method.
 }
 \examples{
-# The value of the dependent variable of the following samples mediates  
+# The value of the dependent variable of the following samples mediates
 # in the stackloss dataset.
-stackloss_center <- stackloss[c(9, 10, 11, 20, 21), ] 
+stackloss_center <- stackloss[c(9, 10, 11, 20, 21), ]
 
-# The following samples are data other than the unit space data and the test 
-# data.   
-stackloss_signal <- stackloss[-c(2, 9, 10, 11, 12, 19, 20, 21), ] 
+# The following samples are data other than the unit space data and the test
+# data.
+stackloss_signal <- stackloss[-c(2, 9, 10, 11, 12, 19, 20, 21), ]
 
-# The following settings are same as the T1 method.             
-model <- general_T(unit_space_data = stackloss_center, 
+# The following settings are same as the T1 method.
+model <- general_T(unit_space_data = stackloss_center,
                    signal_space_data = stackloss_signal,
-                   generates_transform_functions = 
-                                       generates_transformation_functions_T1, 
+                   generates_transform_functions =
+                                       generates_transformation_functions_T1,
                    includes_transformed_data = TRUE)
-        
+
 modified_eta_hat <- model$eta_hat
 modified_eta_hat[3] <- 0
-        
+
 (modified_M_hat <- calc_M_hat(model$X, model$beta_hat, modified_eta_hat))
 
 }

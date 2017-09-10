@@ -20,6 +20,8 @@
 #'                            variable. Underlying data to generate a prediction
 #'                            expression. All data should be continuous values
 #'                            and should not have missing values.
+#' @param subtracts_V_e If \code{TRUE}, then the error variance is subtracted in
+#'                        the numerator when calculating \code{eta_hat}.
 #' @param includes_transformed_data If \code{TRUE}, then the transformed data
 #'                                    are included in a return object.
 #'
@@ -28,6 +30,9 @@
 #'  \item{beta_hat}{Vector with length q. Estimated proportionality constants
 #'                   between each independent variable and the dependent
 #'                   variable.}
+#'  \item{subtracts_V_e}{Logical. If \code{TRUE}, then \code{eta_hat} was
+#'                        calculated without subtracting the error variance in
+#'                        the numerator.}
 #'  \item{eta_hat}{Vector with length q. Estimated squared signal-to-noise
 #'                  ratios (S/N) coresponding to \code{beta_hat}.}
 #'  \item{M_hat}{Vector with length n. The estimated values of the dependent
@@ -95,6 +100,7 @@
 #'
 #' model_T1 <- T1(unit_space_data = stackloss_center,
 #'                signal_space_data = stackloss_signal,
+#'                subtracts_V_e = TRUE,
 #'                includes_transformed_data = TRUE)
 #'
 #' (model_T1$M_hat)
@@ -102,12 +108,14 @@
 #' @export
 T1 <- function(unit_space_data,
                signal_space_data,
+               subtracts_V_e = TRUE,
                includes_transformed_data = FALSE) {
 
   model_T1 <- general_T(unit_space_data = unit_space_data,
                         signal_space_data = signal_space_data,
                         generates_transform_functions =
                                           generates_transformation_functions_T1,
+                        subtracts_V_e = subtracts_V_e,
                         includes_transformed_data = includes_transformed_data)
 
   class(model_T1) <- "T1"
@@ -168,6 +176,7 @@ T1 <- function(unit_space_data,
 #'
 #' model_T1 <- T1(unit_space_data = stackloss_center,
 #'                signal_space_data = stackloss_signal,
+#'                subtracts_V_e = TRUE,
 #'                includes_transformed_data = TRUE)
 #'
 #' # The following test samples are chosen casually.
