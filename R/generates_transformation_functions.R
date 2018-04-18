@@ -114,7 +114,7 @@ generates_transformation_functions_T1 <- function(unit_space_data) {
 #' @export
 generates_transformation_functions_Tb <- function(sample_data) {
 
-  get_eta <- function(one_sample_data, all_sample_data) {
+  get_eta <- function(one_sample_data, all_sample_data, subtracts_V_e) {
     model <- general_T(unit_space_data = one_sample_data,
                        signal_space_data = all_sample_data,
                        generates_transform_functions =
@@ -126,7 +126,13 @@ generates_transformation_functions_Tb <- function(sample_data) {
 
   }
 
-  etas <- apply(sample_data, 1, get_eta, sample_data)
+  # Attention: Dynamic scope is used here.
+  # To avoid, newly defining the wrapper function with a parameter
+  # "subtracts_V_e" and passing the wrapper function to the argument
+  # "generates_transform_functions" may be another solution.
+  etas <- apply(sample_data, 1, get_eta, sample_data,
+                evalq(subtracts_V_e, parent.frame()))
+
   # apply per row (=1) because the rows and columns were transposed in above.
   max_eta_index <- apply(etas, 1, which.max)
 
