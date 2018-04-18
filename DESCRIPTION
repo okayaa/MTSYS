@@ -1,8 +1,8 @@
 Package: MTSYS
 Type: Package
 Title: Methods in Mahalanobis-Taguchi (MT) System
-Version: 1.2.0
-Date: 2017-07-28
+Version: 1.2.1
+Date: 2018-04-18
 Authors@R: c(
     person("Akifumi", "Okayama", email = "akifumi.okayama@akane.waseda.jp",
            role = c("aut", "cre")),
