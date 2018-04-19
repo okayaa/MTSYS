@@ -98,4 +98,3 @@ Inou, A., Nagata, Y., Horita, K., & Mori, A. (2012). Prediciton Accuracies
            \code{\link{generates_transformation_functions_Tb}}, and
            \code{\link{forecasting.Tb}}
 }
-

@@ -71,4 +71,3 @@ Taguchi, G. (2006). Objective Function and Generic Function (11).
            \code{\link{generates_dimensionality_reduction_function}}, and
            \code{\link{diagnosis.MT}}
 }
-

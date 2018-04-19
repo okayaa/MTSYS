@@ -78,4 +78,3 @@ diagnosis_RT <- diagnosis(unit_space = unit_space_RT,
 \code{\link{MT}}, \code{\link{MTA}}, \code{\link{RT}}, and
            \code{\link[base]{solve}}
 }
-

@@ -51,4 +51,3 @@ is.function(normalizes_data) # TRUE
 \seealso{
 \code{\link{MT}} and \code{\link{MTA}}
 }
-

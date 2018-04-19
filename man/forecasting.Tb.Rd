@@ -61,4 +61,3 @@ Inou, A., Nagata, Y., Horita, K., & Mori, A. (2012). Prediciton Accuracies
 \seealso{
 \code{\link{general_forecasting.T}} and \code{\link{Tb}}
 }
-

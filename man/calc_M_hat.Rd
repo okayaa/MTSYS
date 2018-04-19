@@ -49,4 +49,3 @@ modified_eta_hat[3] <- 0
 \seealso{
 \code{\link{general_T}} and \code{\link{general_forecasting.T}}
 }
-

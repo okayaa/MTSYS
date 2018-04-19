@@ -84,4 +84,3 @@ Taguchi, G. (1995). Pattern Recognition and Quality Engineering (1).
 \seealso{
 \code{\link{general_diagnosis.MT}} and \code{\link{MT}}
 }
-

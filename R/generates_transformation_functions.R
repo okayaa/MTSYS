@@ -104,6 +104,18 @@ generates_transformation_functions_T1 <- function(unit_space_data) {
 #' # in the stackloss dataset.
 #' stackloss_center <- stackloss[c(9, 10, 11, 20, 21), ]
 #'
+#' tmp <- generates_transformation_functions_Tb(stackloss_center, TRUE)
+#' center_subtraction_function <- tmp[[1]]
+#' subtracts_ys <- tmp[[2]]
+#' adds_M_0 <- tmp[[3]]
+#'
+#' is.function(center_subtraction_function) # TRUE
+#' is.function(subtracts_ys) # TRUE
+#' is.function(adds_M_0) # TRUE
+#'
+#' # Note that dynamic scope is used when the parameter "subtracts_V_e" is not
+#' # set.
+#' subtracts_V_e <- FALSE
 #' tmp <- generates_transformation_functions_Tb(stackloss_center)
 #' center_subtraction_function <- tmp[[1]]
 #' subtracts_ys <- tmp[[2]]

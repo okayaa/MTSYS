@@ -26,4 +26,3 @@ calc_cofactor(cov(iris_versicolor))
 \seealso{
 \code{\link{MTA}}
 }
-

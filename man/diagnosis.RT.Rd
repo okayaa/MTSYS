@@ -78,4 +78,3 @@ Taguchi, G. (2006). Objective Function and Generic Function (11).
 \seealso{
 \code{\link{general_diagnosis.MT}} and \code{\link{RT}}
 }
-

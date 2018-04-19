@@ -70,4 +70,3 @@ forecasting <- general_forecasting.T(model = model,
 \code{\link{forecasting.T1}}, \code{\link{forecasting.Ta}}, and
            \code{\link{forecasting.Tb}}
 }
-

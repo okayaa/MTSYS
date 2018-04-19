@@ -48,4 +48,3 @@ A list containing the following components is returned.
 \code{\link{diagnosis.MT}}, \code{\link{diagnosis.MTA}}, and
            \code{\link{diagnosis.RT}}
 }
-

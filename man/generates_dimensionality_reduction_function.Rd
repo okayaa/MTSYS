@@ -44,4 +44,3 @@ Taguchi, G. (2006). Objective Function and Generic Function (11).
 \seealso{
 \code{\link{RT}}
 }
-

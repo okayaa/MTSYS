@@ -139,4 +139,3 @@ model <- general_T(unit_space_data = stackloss_center,
 \seealso{
 \code{\link{T1}}, \code{\link{Ta}}, and \code{\link{Tb}}
 }
-

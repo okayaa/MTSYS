@@ -78,4 +78,3 @@ Taguchi, G. & Kanetaka, T. (2002). \emph{Engineering Technical Development
 \seealso{
 \code{\link{general_diagnosis.MT}} and \code{\link{MTA}}
 }
-

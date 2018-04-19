@@ -39,4 +39,3 @@ A list containing the following components is returned.
 \code{\link{forecasting.T1}}, \code{\link{forecasting.Ta}}, and
            \code{\link{forecasting.Tb}}
 }
-

@@ -55,4 +55,3 @@ modified_M_hat <- calc_M_hat(model$X, model$beta_hat, modified_eta_hat)
 \seealso{
 \code{\link{general_T}} and \code{\link{general_forecasting.T}}
 }
-

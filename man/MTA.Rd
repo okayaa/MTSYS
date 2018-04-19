@@ -60,4 +60,3 @@ Taguchi, G. & Kanetaka, T. (2002). \emph{Engineering Technical Development
            \code{\link{generates_normalization_function}}, and
            \code{\link{diagnosis.MT}}
 }
-

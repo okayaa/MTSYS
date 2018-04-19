@@ -74,4 +74,3 @@ Taguchi, G. (1995). Pattern Recognition and Quality Engineering (1).
            \code{\link{generates_normalization_function}}, and
            \code{\link{diagnosis.MT}}
 }
-

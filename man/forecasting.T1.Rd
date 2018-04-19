@@ -76,4 +76,3 @@ Taguchi, G. (2006). Objective Function and Generic Function (12).
 \seealso{
 \code{\link{general_forecasting.T}} and \code{\link{T1}}
 }
-

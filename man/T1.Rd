@@ -120,4 +120,3 @@ Taguchi, G. (2006). Objective Function and Generic Function (12).
            \code{\link{generates_transformation_functions_T1}}, and
            \code{\link{forecasting.T1}}
 }
-

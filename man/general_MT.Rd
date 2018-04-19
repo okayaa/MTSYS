@@ -64,4 +64,3 @@ unit_space <- general_MT(unit_space_data = iris_versicolor,
 \seealso{
 \code{\link{MT}}, \code{\link{MTA}} and \code{\link{RT}}
 }
-

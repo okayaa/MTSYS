@@ -100,4 +100,3 @@ forecasting_Tb <- forecasting(model = model_Tb,
 \seealso{
 \code{\link{T1}}, \code{\link{Ta}}, \code{\link{Tb}}
 }
-

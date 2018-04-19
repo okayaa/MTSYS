@@ -75,4 +75,3 @@ diagnosis <- general_diagnosis.MT(unit_space = unit_space,
 \code{\link{diagnosis.MT}}, \code{\link{diagnosis.MTA}}, and 
            \code{\link{diagnosis.RT}}
 }
-
