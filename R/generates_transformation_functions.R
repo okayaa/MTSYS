@@ -67,6 +67,8 @@ generates_transformation_functions_T1 <- function(unit_space_data) {
 #'                      (variables). The Tb method uses all data to generate the
 #'                      unit space. All data should be continuous values and
 #'                      should not have missing values.
+#' @param subtracts_V_e If \code{TRUE}, then the error variance is subtracted in
+#'                        the numerator when calculating \code{eta_hat}.
 #'
 #' @return \code{generates_transformation_functions_Tb} returns a list
 #'           containing three functions. For the first component, the data
@@ -112,7 +114,15 @@ generates_transformation_functions_T1 <- function(unit_space_data) {
 #' is.function(adds_M_0) # TRUE
 #'
 #' @export
-generates_transformation_functions_Tb <- function(sample_data) {
+generates_transformation_functions_Tb <- function(sample_data, subtracts_V_e) {
+
+  # Attention: Dynamic scope is used here.
+  # To avoid, newly defining the wrapper function with a parameter
+  # "subtracts_V_e" and passing the wrapper function to the argument
+  # "generates_transform_functions" may be another solution.
+  if (missing(subtracts_V_e)) {
+    subtracts_V_e <- evalq(subtracts_V_e, parent.frame())
+  }
 
   get_eta <- function(one_sample_data, all_sample_data, subtracts_V_e) {
     model <- general_T(unit_space_data = one_sample_data,
@@ -126,12 +136,7 @@ generates_transformation_functions_Tb <- function(sample_data) {
 
   }
 
-  # Attention: Dynamic scope is used here.
-  # To avoid, newly defining the wrapper function with a parameter
-  # "subtracts_V_e" and passing the wrapper function to the argument
-  # "generates_transform_functions" may be another solution.
-  etas <- apply(sample_data, 1, get_eta, sample_data,
-                evalq(subtracts_V_e, parent.frame()))
+  etas <- apply(sample_data, 1, get_eta, sample_data, subtracts_V_e)
 
   # apply per row (=1) because the rows and columns were transposed in above.
   max_eta_index <- apply(etas, 1, which.max)
