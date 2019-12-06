@@ -54,7 +54,7 @@ iris_versicolor <- iris[61:100, -5]
 unit_space_MT <- MT(unit_space_data = iris_versicolor)
 
 # 10 data for each kind (setosa, versicolor, virginica) in the iris dataset
-iris_test <- iris[c(1:10, 51:60, 101:111), -5]
+iris_test <- iris[c(1:10, 51:60, 101:110), -5]
 
 diagnosis_MT <- diagnosis(unit_space = unit_space_MT, newdata = iris_test, 
                           threshold = 4)
@@ -64,8 +64,8 @@ diagnosis_MT <- diagnosis(unit_space = unit_space_MT, newdata = iris_test,
 #> FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 #>   51    52    53    54    55    56    57    58    59    60   
 #> TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-#>  101   102   103   104   105   106   107   108   109   110   111 
-#> TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE 
+#>  101   102   103   104   105   106   107   108   109   110 
+#> TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE 
 ```
 
 References
