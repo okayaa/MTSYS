@@ -363,7 +363,11 @@ calc_M_hat <- function(X, beta_hat, eta_hat) {
     stop("beta_hat and eta_hat should have the same length.")
   }
 
-  M_hat <- apply(eta_hat * t(X) / beta_hat, 2, sum) / sum(eta_hat)
+  if (all(eta_hat == 0)) {
+    M_hat <- rep(0, nrow(X))
+  } else { 
+    M_hat <- apply(eta_hat * t(X) / beta_hat, 2, sum) / sum(eta_hat)   
+  }
 
   return(M_hat)
 
